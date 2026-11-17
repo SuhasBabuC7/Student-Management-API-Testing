@@ -1,0 +1,64 @@
+kind: postman-cli-collection-run-summary
+schemaVersion: 1
+runId: a02f9cac-c3cc-43d1-b03d-899589ad98ef
+state: completed
+generatedAt: '2026-11-17T16:44:04.311Z'
+files:
+  summary: student-management-api-testing-2026-11-17-22-14-02.collection-run-summary.yaml
+  executions: student-management-api-testing-2026-11-17-22-14-02.collection-run-executions.yaml
+meta:
+  collection:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    description:
+      content: Automated functional, negative and boundary value testing of Student Management REST API.
+      type: text/plain
+  environment:
+    id: 445fea27-ad0a-40e7-bf3c-655bf98fb3bf
+    name: null
+  started: '2026-11-17T16:44:02.718Z'
+  completed: '2026-11-17T16:44:04.311Z'
+  durationMs: 1593
+environment:
+  cli:
+    version: 1.91.0
+    userAgent: Postman CLI/1.91.0
+    agent: null
+  system:
+    os:
+      type: Windows_NT
+      platform: win32
+      arch: x64
+      release: 10.0.26300
+    hardware:
+      cpus: 12
+      totalMemory: 16849256448
+  isCI: false
+  ci: null
+  git: null
+stats:
+  iterations:
+    executed: 1
+    errors: 0
+  executedRequests:
+    executed: 15
+    errors: 0
+  prerequestScripts:
+    executed: 0
+    errors: 0
+  postresponseScripts:
+    executed: 15
+    errors: 0
+  tests:
+    executed: 20
+    failed: 0
+  timeStats:
+    responseAverage: 14.266666666666667
+    responseMin: 8
+    responseMax: 46
+    responseStandardDeviation: 9.65723677985697
+transfers:
+  responseTotal: 1404
+failures: []
+executionsRecorded: 15
+simulation: null

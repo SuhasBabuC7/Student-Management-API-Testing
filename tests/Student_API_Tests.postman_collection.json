@@ -1,0 +1,300 @@
+{
+  "info": {
+    "name": "Student Management API Testing",
+    "description": "Automated functional, negative and boundary value testing of Student Management REST API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:5000"
+    },
+    {
+      "key": "studentId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "TC01 - API Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+            "pm.test('API is running', function () { pm.expect(pm.response.json().message).to.include('running'); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC02 - Add Valid Student",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Suhas\",\"age\":21,\"email\":\"suhas@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Student created with status 201', function () { pm.response.to.have.status(201); });",
+            "pm.test('Success message exists', function () { pm.expect(pm.response.json().message).to.eql('Student added successfully'); });",
+            "if (pm.response.code === 201) { pm.collectionVariables.set('studentId', pm.response.json().student.id); }"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC03 - Retrieve All Students",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Status code is 200', function () { pm.response.to.have.status(200); });",
+            "pm.test('Response is an array', function () { pm.expect(pm.response.json()).to.be.an('array'); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC04 - Retrieve Student by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/students/{{studentId}}"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Student retrieved successfully', function () { pm.response.to.have.status(200); });",
+            "pm.test('Student has correct ID', function () { pm.expect(pm.response.json().id).to.eql(Number(pm.collectionVariables.get('studentId'))); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC05 - Update Student",
+      "request": {
+        "method": "PUT",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Updated Student\",\"age\":22,\"email\":\"updated@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students/{{studentId}}"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Update successful', function () { pm.response.to.have.status(200); });",
+            "pm.test('Name updated', function () { pm.expect(pm.response.json().student.name).to.eql('Updated Student'); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC06 - Delete Student",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/students/{{studentId}}"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Delete successful', function () { pm.response.to.have.status(200); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC07 - Invalid Student ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/students/9999"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Nonexistent student returns 404', function () { pm.response.to.have.status(404); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC08 - Empty Student Name",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"\",\"age\":21,\"email\":\"test@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Empty name rejected', function () { pm.response.to.have.status(400); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC09 - Invalid Email",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Test Student\",\"age\":21,\"email\":\"invalid-email\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Invalid email rejected', function () { pm.response.to.have.status(400); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC10 - Age Below Minimum",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Test Student\",\"age\":15,\"email\":\"test@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Age 15 rejected', function () { pm.response.to.have.status(400); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC11 - Age Above Maximum",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Test Student\",\"age\":101,\"email\":\"test@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Age 101 rejected', function () { pm.response.to.have.status(400); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC12 - Minimum Valid Age",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Test Student\",\"age\":16,\"email\":\"test@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Minimum age 16 accepted', function () { pm.response.to.have.status(201); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC13 - Maximum Valid Age",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Test Student\",\"age\":100,\"email\":\"test@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('Maximum age 100 accepted', function () { pm.response.to.have.status(201); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC14 - Invalid Age Data Type",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Test Student\",\"age\":\"twenty\",\"email\":\"test@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('String age rejected', function () { pm.response.to.have.status(400); });"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "TC15 - One Character Name",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"A\",\"age\":21,\"email\":\"test@gmail.com\"}"
+        },
+        "url": "{{baseUrl}}/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "exec": [
+            "pm.test('One character name rejected', function () { pm.response.to.have.status(400); });"
+          ]
+        }
+      }]
+    }
+  ]
+}

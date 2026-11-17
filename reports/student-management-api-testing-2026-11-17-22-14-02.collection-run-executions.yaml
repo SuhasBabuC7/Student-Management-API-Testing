@@ -1,0 +1,1258 @@
+---
+kind: postman-cli-collection-run-executions
+schemaVersion: 1
+runId: a02f9cac-c3cc-43d1-b03d-899589ad98ef
+summaryFile: student-management-api-testing-2026-11-17-22-14-02.collection-run-summary.yaml
+collection:
+  id: f200883c-f8f4-4309-b37d-e50bdfee5922
+  name: Student Management API Testing
+generatedAt: '2026-11-17T16:44:02.372Z'
+---
+iteration: 0
+cursorRef: f69a72b5-c22f-471d-b249-ce6cb0685e22
+item:
+  id: 6327606d-47b4-438b-aac7-1b9211fb1fd2
+  name: TC01 - API Health Check
+  folders:
+    - TC01 - API Health Check
+  fullName: TC01 - API Health Check
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: GET
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - ''
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 6af52318-cfda-410d-bdfc-98203c6a5c4c
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+response:
+  id: ebae2a2e-14c4-4679-9762-574ba90d2cf4
+  code: 200
+  status: OK
+  responseTime: 27
+  responseSize: 73
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:02 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '73'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "message": "Student Management API is running",
+      "version": "1.0"
+    }
+tests:
+  - name: Status code is 200
+    status: passed
+  - name: API is running
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: f90aed88-2829-4636-8858-a7d1587f646c
+item:
+  id: 935e8e5e-1d7f-4620-ab73-b08865301291
+  name: TC02 - Add Valid Student
+  folders:
+    - TC02 - Add Valid Student
+  fullName: TC02 - Add Valid Student
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: f9ae12a1-834f-4d45-b79b-d7d3f80e53ae
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '51'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Suhas","age":21,"email":"suhas@gmail.com"}'
+response:
+  id: f6d6ac6e-dd3c-4fba-8f93-cbcc6f3a0b0b
+  code: 201
+  status: CREATED
+  responseTime: 12
+  responseSize: 146
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:02 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '146'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "message": "Student added successfully",
+      "student": {
+        "age": 21,
+        "email": "suhas@gmail.com",
+        "id": 4,
+        "name": "Suhas"
+      }
+    }
+tests:
+  - name: Student created with status 201
+    status: passed
+  - name: Success message exists
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 159a6972-402f-4e77-b92b-03ce6b54a1ba
+item:
+  id: a543ccbd-542d-4743-a884-3dcc125b5846
+  name: TC03 - Retrieve All Students
+  folders:
+    - TC03 - Retrieve All Students
+  fullName: TC03 - Retrieve All Students
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: GET
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 4fb8e7e8-4c90-46db-b7c4-b0fd4751eec9
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+response:
+  id: e422d371-93c3-480a-b1e9-4ecd92d8915d
+  code: 200
+  status: OK
+  responseTime: 9
+  responseSize: 283
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:02 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '283'
+    - key: Connection
+      value: close
+  body: |
+    [
+      {
+        "age": 16,
+        "email": "test@gmail.com",
+        "id": 2,
+        "name": "Test Student"
+      },
+      {
+        "age": 100,
+        "email": "test@gmail.com",
+        "id": 3,
+        "name": "Test Student"
+      },
+      {
+        "age": 21,
+        "email": "suhas@gmail.com",
+        "id": 4,
+        "name": "Suhas"
+      }
+    ]
+tests:
+  - name: Status code is 200
+    status: passed
+  - name: Response is an array
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 220e9ff3-e792-4bbd-8faa-8eea549428e9
+item:
+  id: 71349c62-16a5-43e0-aac4-43d0102b2fce
+  name: TC04 - Retrieve Student by ID
+  folders:
+    - TC04 - Retrieve Student by ID
+  fullName: TC04 - Retrieve Student by ID
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: GET
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+      - '4'
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: f8016921-ab1d-437c-b609-9e5b3e3b56e3
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+response:
+  id: eb95722c-4a32-4cf8-84ea-be00e388db80
+  code: 200
+  status: OK
+  responseTime: 8
+  responseSize: 76
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '76'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "age": 21,
+      "email": "suhas@gmail.com",
+      "id": 4,
+      "name": "Suhas"
+    }
+tests:
+  - name: Student retrieved successfully
+    status: passed
+  - name: Student has correct ID
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: fd74771f-f399-4ffa-bb68-c607f418a584
+item:
+  id: ac96d894-13e7-47f1-bb45-1b9e1b651297
+  name: TC05 - Update Student
+  folders:
+    - TC05 - Update Student
+  fullName: TC05 - Update Student
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: PUT
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+      - '4'
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 192cb651-49e5-4ce6-98d6-c73773eae961
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '63'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Updated Student","age":22,"email":"updated@gmail.com"}'
+response:
+  id: 24b2680e-5991-4d6c-ac03-82a8497fc1b6
+  code: 200
+  status: OK
+  responseTime: 8
+  responseSize: 160
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '160'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "message": "Student updated successfully",
+      "student": {
+        "age": 22,
+        "email": "updated@gmail.com",
+        "id": 4,
+        "name": "Updated Student"
+      }
+    }
+tests:
+  - name: Update successful
+    status: passed
+  - name: Name updated
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: aa0e4a6a-693b-4c56-9f53-292efaf1660e
+item:
+  id: 358d1003-b2c6-4058-9ea0-a2b145fbc29e
+  name: TC06 - Delete Student
+  folders:
+    - TC06 - Delete Student
+  fullName: TC06 - Delete Student
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: DELETE
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+      - '4'
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 327a78fa-f8fe-4076-acca-ca99fe2b4059
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+response:
+  id: cd471683-d515-4209-beb7-f1eab0ba5107
+  code: 200
+  status: OK
+  responseTime: 12
+  responseSize: 48
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '48'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "message": "Student deleted successfully"
+    }
+tests:
+  - name: Delete successful
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 34fab825-c867-4c22-98c6-29a4ddee70f3
+item:
+  id: 3c576bc0-3c96-405c-9675-b751f3827fc5
+  name: TC07 - Invalid Student ID
+  folders:
+    - TC07 - Invalid Student ID
+  fullName: TC07 - Invalid Student ID
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: GET
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+      - '9999'
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 52a7ef06-9e1d-477f-8092-dc6f77043faf
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+response:
+  id: db7bd748-9b8e-4c79-bf46-673dbb23a1e6
+  code: 404
+  status: NOT FOUND
+  responseTime: 9
+  responseSize: 35
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '35'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "error": "Student not found"
+    }
+tests:
+  - name: Nonexistent student returns 404
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: af5e541c-36d7-4015-9471-abb491f3523b
+item:
+  id: d3e17b07-25d7-4c70-9951-1355f4420cf4
+  name: TC08 - Empty Student Name
+  folders:
+    - TC08 - Empty Student Name
+  fullName: TC08 - Empty Student Name
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: f5cda431-26eb-413e-9f93-9f5a5aecdb8f
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '45'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"","age":21,"email":"test@gmail.com"}'
+response:
+  id: 1df75846-7e2a-4a48-8201-88435ff431c3
+  code: 400
+  status: BAD REQUEST
+  responseTime: 10
+  responseSize: 49
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '49'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "error": "Name must be a non-empty string"
+    }
+tests:
+  - name: Empty name rejected
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 3fea7823-b541-4a23-be0a-f5875ee2234b
+item:
+  id: 1cfb0a91-7028-4e06-8eed-4894799a4c55
+  name: TC09 - Invalid Email
+  folders:
+    - TC09 - Invalid Email
+  fullName: TC09 - Invalid Email
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 946f067d-6e40-4585-80af-c1eda3a89776
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '56'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Test Student","age":21,"email":"invalid-email"}'
+response:
+  id: 6fb5e922-9838-46cc-bb32-4bf0c6ca32c9
+  code: 400
+  status: BAD REQUEST
+  responseTime: 10
+  responseSize: 39
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '39'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "error": "Invalid email address"
+    }
+tests:
+  - name: Invalid email rejected
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: b7d7a9fe-d8be-4367-acc0-57f785d86c8e
+item:
+  id: d8dcf873-861e-4922-857b-96b89f10d922
+  name: TC10 - Age Below Minimum
+  folders:
+    - TC10 - Age Below Minimum
+  fullName: TC10 - Age Below Minimum
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 83448c21-8826-41f5-a933-40296b9eec74
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '57'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Test Student","age":15,"email":"test@gmail.com"}'
+response:
+  id: ce83b527-1224-4079-a714-96d7b4b44def
+  code: 400
+  status: BAD REQUEST
+  responseTime: 13
+  responseSize: 48
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '48'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "error": "Age must be between 16 and 100"
+    }
+tests:
+  - name: Age 15 rejected
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: fa48bfc9-cc9a-44e6-a066-c67e490ffb7b
+item:
+  id: 6b6dddcc-7c7a-41c9-9ece-be2312b0723a
+  name: TC11 - Age Above Maximum
+  folders:
+    - TC11 - Age Above Maximum
+  fullName: TC11 - Age Above Maximum
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 9bca96bf-bd84-4bb8-be1b-b1398083e854
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '58'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Test Student","age":101,"email":"test@gmail.com"}'
+response:
+  id: 010226ba-6c6b-4832-90df-ecc5310d10df
+  code: 400
+  status: BAD REQUEST
+  responseTime: 8
+  responseSize: 48
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '48'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "error": "Age must be between 16 and 100"
+    }
+tests:
+  - name: Age 101 rejected
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 035bc7d4-0127-43b9-96cc-c57d85f770df
+item:
+  id: f1869971-580c-42e3-b39c-5de3317defd6
+  name: TC12 - Minimum Valid Age
+  folders:
+    - TC12 - Minimum Valid Age
+  fullName: TC12 - Minimum Valid Age
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: b38b30d1-5557-4f4a-8688-f0ab61d197b3
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '57'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Test Student","age":16,"email":"test@gmail.com"}'
+response:
+  id: f01b8853-0683-4c72-bd8b-05512581104c
+  code: 201
+  status: CREATED
+  responseTime: 12
+  responseSize: 152
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '152'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "message": "Student added successfully",
+      "student": {
+        "age": 16,
+        "email": "test@gmail.com",
+        "id": 5,
+        "name": "Test Student"
+      }
+    }
+tests:
+  - name: Minimum age 16 accepted
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 644d32d0-d20a-41b6-a269-1c0efcfd122b
+item:
+  id: 175f2469-07b6-4419-83a7-2fc91998a31d
+  name: TC13 - Maximum Valid Age
+  folders:
+    - TC13 - Maximum Valid Age
+  fullName: TC13 - Maximum Valid Age
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 5167d5fc-4efa-4167-9b3f-97244009f080
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '58'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Test Student","age":100,"email":"test@gmail.com"}'
+response:
+  id: c735bb91-34cf-403c-bd1b-e1c8c025a4dc
+  code: 201
+  status: CREATED
+  responseTime: 16
+  responseSize: 153
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:03 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '153'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "message": "Student added successfully",
+      "student": {
+        "age": 100,
+        "email": "test@gmail.com",
+        "id": 6,
+        "name": "Test Student"
+      }
+    }
+tests:
+  - name: Maximum age 100 accepted
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 356cbd6f-0be2-4d7a-8972-32af87299e74
+item:
+  id: 5e3f940e-8404-49cd-bfb7-e77c9b0e8a7a
+  name: TC14 - Invalid Age Data Type
+  folders:
+    - TC14 - Invalid Age Data Type
+  fullName: TC14 - Invalid Age Data Type
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 2ab2e432-5750-45c0-b0f1-b07c72894559
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '63'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"Test Student","age":"twenty","email":"test@gmail.com"}'
+response:
+  id: 3cc09eaf-88d0-40b5-a63b-65c21a7d120a
+  code: 400
+  status: BAD REQUEST
+  responseTime: 14
+  responseSize: 40
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:04 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '40'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "error": "Age must be an integer"
+    }
+tests:
+  - name: String age rejected
+    status: passed
+errors: []
+---
+iteration: 0
+cursorRef: 7e9fff9b-fb27-4d4e-8e17-2afdf9b82864
+item:
+  id: 07e5b578-6ba4-42e5-ad81-fc9fecff14e8
+  name: TC15 - One Character Name
+  folders:
+    - TC15 - One Character Name
+  fullName: TC15 - One Character Name
+  parent:
+    id: f200883c-f8f4-4309-b37d-e50bdfee5922
+    name: Student Management API Testing
+    folders: []
+request:
+  method: POST
+  url:
+    protocol: http
+    port: '5000'
+    path:
+      - students
+    host:
+      - '127'
+      - '0'
+      - '0'
+      - '1'
+    query: []
+    variable: []
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: User-Agent
+      value: PostmanRuntime/7.56.2
+      system: true
+    - key: Accept
+      value: '*/*'
+      system: true
+    - key: Cache-Control
+      value: no-cache
+      system: true
+    - key: Postman-Token
+      value: 80895da7-5f62-42af-b165-1d79eb58f25f
+      system: true
+    - key: Host
+      value: 127.0.0.1:5000
+      system: true
+    - key: Accept-Encoding
+      value: gzip, deflate, br
+      system: true
+    - key: Connection
+      value: keep-alive
+      system: true
+    - key: Content-Length
+      value: '46'
+      system: true
+  body:
+    mode: raw
+    raw: '{"name":"A","age":21,"email":"test@gmail.com"}'
+response:
+  id: 43d29273-8e7b-4516-ba5c-7c48d9fbe26a
+  code: 400
+  status: BAD REQUEST
+  responseTime: 46
+  responseSize: 54
+  headers:
+    - key: Server
+      value: Werkzeug/3.1.9 Python/3.13.5
+    - key: Date
+      value: Tue, 17 Nov 2026 16:44:04 GMT
+    - key: Content-Type
+      value: application/json
+    - key: Content-Length
+      value: '54'
+    - key: Connection
+      value: close
+  body: |
+    {
+      "error": "Name must contain 2 to 50 characters"
+    }
+tests:
+  - name: One character name rejected
+    status: passed
+errors: []
